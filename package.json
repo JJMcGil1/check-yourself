@@ -1,0 +1,25 @@
+{
+  "name": "check-yourself",
+  "version": "1.0.0",
+  "description": "Track your spending temptations and make better choices",
+  "main": ".vite/build/main.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^7.6.0",
+    "@electron-forge/maker-dmg": "^7.6.0",
+    "@electron-forge/maker-zip": "^7.6.0",
+    "@electron-forge/plugin-vite": "^7.6.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "electron": "^35.0.0"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.7.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "recharts": "^2.15.0"
+  }
+}

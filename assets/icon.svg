@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF"/>
+      <stop offset="100%" style="stop-color:#F0F0F2"/>
+    </linearGradient>
+    <linearGradient id="lineGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#30D158"/>
+      <stop offset="100%" style="stop-color:#34C759"/>
+    </linearGradient>
+    <linearGradient id="areaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#30D158;stop-opacity:0.25"/>
+      <stop offset="100%" style="stop-color:#30D158;stop-opacity:0.02"/>
+    </linearGradient>
+    <clipPath id="iconmask">
+      <path d="
+        M 512 2
+        C 252.4 2 146.8 2 82.4 82.4
+        C 2 146.8 2 252.4 2 512
+        C 2 771.6 2 877.2 82.4 941.6
+        C 146.8 1022 252.4 1022 512 1022
+        C 771.6 1022 877.2 1022 941.6 941.6
+        C 1022 877.2 1022 771.6 1022 512
+        C 1022 252.4 1022 146.8 941.6 82.4
+        C 877.2 2 771.6 2 512 2Z"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#iconmask)">
+    <!-- Background -->
+    <rect width="1024" height="1024" fill="url(#bg)"/>
+    <!-- Subtle border -->
+    <rect x="4" y="4" width="1016" height="1016" fill="none" stroke="#D1D1D6" stroke-width="2" rx="220"/>
+    <!-- Area fill under the growth line -->
+    <path d="M120 780 L260 680 L400 720 L540 520 L680 380 L820 220 L900 180 L900 880 L120 880 Z"
+          fill="url(#areaGrad)"/>
+    <!-- Growth line — bold upward trend -->
+    <path d="M120 780 L260 680 L400 720 L540 520 L680 380 L820 220 L900 180"
+          fill="none"
+          stroke="url(#lineGrad)"
+          stroke-width="52"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+  </g>
+</svg>
