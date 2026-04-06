@@ -79,10 +79,10 @@ const createWindow = () => {
     },
   });
 
-  if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
-    mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
+  if (!app.isPackaged) {
+    mainWindow.loadURL('http://localhost:5173');
   } else {
-    mainWindow.loadFile(path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`));
+    mainWindow.loadFile(path.join(__dirname, '../../dist/index.html'));
   }
 };
 
@@ -97,8 +97,15 @@ app.whenReady().then(() => {
   ipcMain.handle('get-daily-summary', () => getDailySummary());
   ipcMain.handle('get-stats', () => getStats());
   ipcMain.handle('delete-entry', (_e, id) => deleteEntry(id));
+  ipcMain.handle('get-version', () => app.getVersion());
 
   createWindow();
+
+  // Start auto-updater in production
+  if (app.isPackaged) {
+    const { initAutoUpdater } = require('./auto-updater');
+    initAutoUpdater(mainWindow);
+  }
 });
 
 app.on('window-all-closed', () => {

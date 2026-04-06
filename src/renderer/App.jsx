@@ -3,6 +3,7 @@ import LogForm from './components/LogForm';
 import EntryList from './components/EntryList';
 import ChoiceChart from './components/ChoiceChart';
 import StatsBar from './components/StatsBar';
+import UpdateToast from './components/UpdateToast';
 
 export default function App() {
   const [entries, setEntries] = useState([]);
@@ -34,6 +35,7 @@ export default function App() {
 
   return (
     <div className="app">
+      <UpdateToast />
       <header className="titlebar">
         <span className="titlebar-text">Check Yourself</span>
       </header>
