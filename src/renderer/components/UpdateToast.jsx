@@ -3,26 +3,28 @@ import React, { useState, useEffect } from 'react';
 const styles = {
   container: {
     position: 'fixed',
-    top: 24,
-    right: 24,
+    top: 20,
+    right: 20,
     zIndex: 9999,
-    width: 320,
-    background: 'var(--surface)',
-    borderRadius: 12,
-    boxShadow: '0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.08)',
-    border: '1px solid var(--border)',
+    width: 300,
+    background: 'rgba(26, 26, 31, 0.95)',
+    backdropFilter: 'blur(20px)',
+    WebkitBackdropFilter: 'blur(20px)',
+    borderRadius: 14,
+    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5), 0 0 1px rgba(255, 255, 255, 0.06)',
+    border: '1px solid rgba(255, 255, 255, 0.08)',
     padding: 16,
-    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
   },
   title: {
     fontSize: 14,
     fontWeight: 600,
-    color: 'var(--text)',
+    color: '#F0F0F2',
     marginBottom: 4,
   },
   subtitle: {
     fontSize: 12,
-    color: 'var(--text-secondary)',
+    color: '#8B8B97',
     marginBottom: 12,
   },
   buttons: {
@@ -32,10 +34,10 @@ const styles = {
   },
   btnSecondary: {
     padding: '6px 14px',
-    border: '1px solid var(--border)',
-    borderRadius: 6,
+    border: '1px solid rgba(255, 255, 255, 0.08)',
+    borderRadius: 8,
     background: 'transparent',
-    color: 'var(--text-secondary)',
+    color: '#8B8B97',
     fontSize: 13,
     fontWeight: 500,
     cursor: 'pointer',
@@ -43,33 +45,35 @@ const styles = {
   btnPrimary: {
     padding: '6px 14px',
     border: 'none',
-    borderRadius: 6,
-    background: '#007aff',
-    color: 'white',
+    borderRadius: 8,
+    background: 'linear-gradient(135deg, #34D399 0%, #06B6D4 100%)',
+    color: '#0C0C0E',
     fontSize: 13,
-    fontWeight: 500,
+    fontWeight: 700,
     cursor: 'pointer',
+    boxShadow: '0 2px 8px rgba(52, 211, 153, 0.3)',
   },
   progressBar: {
     width: '100%',
-    height: 4,
-    background: 'var(--border)',
+    height: 3,
+    background: 'rgba(255, 255, 255, 0.06)',
     borderRadius: 2,
     overflow: 'hidden',
     marginBottom: 8,
   },
   progressFill: {
     height: '100%',
-    background: '#007aff',
+    background: 'linear-gradient(90deg, #34D399, #06B6D4)',
     borderRadius: 2,
     transition: 'width 0.3s ease',
+    boxShadow: '0 0 8px rgba(52, 211, 153, 0.4)',
   },
   spinner: {
     display: 'inline-block',
     width: 14,
     height: 14,
-    border: '2px solid var(--border)',
-    borderTopColor: '#007aff',
+    border: '2px solid rgba(255, 255, 255, 0.08)',
+    borderTopColor: '#34D399',
     borderRadius: '50%',
     animation: 'spin 0.8s linear infinite',
     marginRight: 8,
@@ -77,13 +81,13 @@ const styles = {
   },
   error: {
     fontSize: 12,
-    color: 'var(--bad)',
+    color: '#FB7185',
     marginBottom: 8,
   },
 };
 
 export default function UpdateToast() {
-  const [state, setState] = useState(null); // 'available' | 'downloading' | 'installing' | 'error'
+  const [state, setState] = useState(null);
   const [version, setVersion] = useState('');
   const [progress, setProgress] = useState(0);
   const [errorMsg, setErrorMsg] = useState('');

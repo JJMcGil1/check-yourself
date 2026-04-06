@@ -71,7 +71,9 @@ const createWindow = () => {
     minHeight: 500,
     icon: path.join(app.getAppPath(), 'assets/icon.png'),
     titleBarStyle: 'hiddenInset',
-    trafficLightPosition: { x: 16, y: 16 },
+    trafficLightPosition: { x: 16, y: 18 },
+    backgroundColor: '#0C0C0E',
+    vibrancy: undefined,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
@@ -95,6 +97,11 @@ app.whenReady().then(() => {
   ipcMain.handle('get-stats', () => getStats());
   ipcMain.handle('delete-entry', (_e, id) => deleteEntry(id));
   ipcMain.handle('get-version', () => app.getVersion());
+
+  // Set dock icon in dev mode (macOS ignores BrowserWindow icon option)
+  if (!app.isPackaged && process.platform === 'darwin' && app.dock) {
+    app.dock.setIcon(path.join(app.getAppPath(), 'assets/icon.png'));
+  }
 
   createWindow();
 

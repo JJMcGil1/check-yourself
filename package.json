@@ -1,6 +1,6 @@
 {
   "name": "check-yourself",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Track your spending temptations and make better choices",
   "main": "src/main/main.js",
   "scripts": {

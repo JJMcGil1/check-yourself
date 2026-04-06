@@ -15,23 +15,24 @@ const CustomTooltip = ({ active, payload, label }) => {
   const bad = payload.find(p => p.dataKey === 'bad')?.value || 0;
   return (
     <div style={{
-      background: 'rgba(255,255,255,0.96)',
-      backdropFilter: 'blur(12px)',
-      border: '1px solid var(--border)',
+      background: 'rgba(26, 26, 31, 0.95)',
+      backdropFilter: 'blur(20px)',
+      WebkitBackdropFilter: 'blur(20px)',
+      border: '1px solid rgba(255, 255, 255, 0.08)',
       borderRadius: 10,
       padding: '10px 14px',
       fontSize: 13,
       fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif',
-      boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
-      lineHeight: 1.5,
+      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)',
+      lineHeight: 1.6,
     }}>
-      <div style={{ fontWeight: 600, color: 'var(--text)', marginBottom: 2 }}>
+      <div style={{ fontWeight: 600, color: '#F0F0F2', marginBottom: 2 }}>
         {formatDate(label)}
       </div>
-      <div style={{ color: 'var(--good)', fontWeight: 500 }}>
+      <div style={{ color: '#34D399', fontWeight: 600 }}>
         Resisted: {good}
       </div>
-      <div style={{ color: 'var(--bad)', fontWeight: 500 }}>
+      <div style={{ color: '#FB7185', fontWeight: 600 }}>
         Gave in: {bad}
       </div>
     </div>
@@ -62,47 +63,47 @@ export default function ChoiceChart({ data }) {
         <AreaChart data={chartData} margin={{ top: 8, right: 4, bottom: 0, left: -24 }}>
           <defs>
             <linearGradient id="gradGood" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="var(--good)" stopOpacity={0.15} />
-              <stop offset="100%" stopColor="var(--good)" stopOpacity={0.01} />
+              <stop offset="0%" stopColor="#34D399" stopOpacity={0.3} />
+              <stop offset="100%" stopColor="#34D399" stopOpacity={0.02} />
             </linearGradient>
             <linearGradient id="gradBad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="var(--bad)" stopOpacity={0.1} />
-              <stop offset="100%" stopColor="var(--bad)" stopOpacity={0.01} />
+              <stop offset="0%" stopColor="#FB7185" stopOpacity={0.2} />
+              <stop offset="100%" stopColor="#FB7185" stopOpacity={0.02} />
             </linearGradient>
           </defs>
-          <CartesianGrid stroke="var(--border)" strokeDasharray="none" vertical={false} strokeOpacity={0.5} />
+          <CartesianGrid stroke="rgba(255, 255, 255, 0.04)" strokeDasharray="none" vertical={false} />
           <XAxis
             dataKey="label"
-            tick={{ fontSize: 11, fill: 'var(--text-secondary)', fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif' }}
+            tick={{ fontSize: 11, fill: '#55555F', fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif' }}
             axisLine={false}
             tickLine={false}
             dy={4}
           />
           <YAxis
             allowDecimals={false}
-            tick={{ fontSize: 11, fill: 'var(--text-secondary)', fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif' }}
+            tick={{ fontSize: 11, fill: '#55555F', fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif' }}
             axisLine={false}
             tickLine={false}
           />
-          <Tooltip content={<CustomTooltip />} cursor={{ stroke: 'var(--border)', strokeWidth: 1 }} />
+          <Tooltip content={<CustomTooltip />} cursor={{ stroke: 'rgba(255, 255, 255, 0.06)', strokeWidth: 1 }} />
           <Area
             type="monotone"
             dataKey="good"
-            stroke="var(--good)"
-            strokeWidth={2}
+            stroke="#34D399"
+            strokeWidth={2.5}
             fill="url(#gradGood)"
             dot={false}
-            activeDot={{ r: 4, fill: 'var(--good)', stroke: '#fff', strokeWidth: 2 }}
+            activeDot={{ r: 5, fill: '#34D399', stroke: '#0C0C0E', strokeWidth: 3 }}
             name="Resisted"
           />
           <Area
             type="monotone"
             dataKey="bad"
-            stroke="var(--bad)"
+            stroke="#FB7185"
             strokeWidth={2}
             fill="url(#gradBad)"
             dot={false}
-            activeDot={{ r: 4, fill: 'var(--bad)', stroke: '#fff', strokeWidth: 2 }}
+            activeDot={{ r: 5, fill: '#FB7185', stroke: '#0C0C0E', strokeWidth: 3 }}
             name="Gave In"
           />
         </AreaChart>
