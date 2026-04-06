@@ -87,9 +87,6 @@ const createWindow = () => {
 };
 
 app.whenReady().then(() => {
-  if (process.platform === 'darwin' && app.dock) {
-    app.dock.setIcon(path.join(app.getAppPath(), 'assets/icon.png'));
-  }
   initDatabase();
 
   ipcMain.handle('add-entry', (_e, entry) => addEntry(entry));
